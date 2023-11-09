@@ -42,8 +42,8 @@ Hi! I am an undergraduate student majored in computer science at **[Shanghai Jia
 - [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020** -->
 
 # 📖 Educations
-- *2018.09 - now*, Shanghai Jiao Tong University, Shanghai, China. (Bachelor of Science)
-- *2015.09 - 2018.06*, Zhejiang Ruian High School, Zhejiang, China.
+- *2021.09 - now*, Shanghai Jiao Tong University, Shanghai, China. (Bachelor of Science)
+- *2018.09 - 2021.06*, Zhejiang Ruian High School, Zhejiang, China.
 
 
 # 🎖 Honors and Awards
