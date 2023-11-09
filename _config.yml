@@ -7,7 +7,7 @@
 
 # Site Settings
 title                    : "Kangrui Cen"
-description              : "This is an academic personal homepage belongs to Kangrui Cen"
+description              : "Undergraduate computer science student at SJTU"
 repository               : "Kr-Panghu/Kr-Panghu.github.io"
 google_scholar_stats_use_cdn : true
 
@@ -25,7 +25,7 @@ author:
   avatar           : "images/kr-512x512.png"
   bio              : "Shanghai Jiao Tong University"
   location         : "Shanghai, China"
-  employer         : "https://jhc.sjtu.edu.cn/~xiaohongliu/"
+  employer         : # "https://jhc.sjtu.edu.cn/~xiaohongliu/"
   pubmed           : 
   googlescholar    : 
   email            : "kr2256671169@sjtu.edu.cn"
