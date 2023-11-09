@@ -22,7 +22,7 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 # Site Author
 author:
   name             : "Kangrui Cen"
-  avatar           : "images/android-chrome-512x512.png"
+  avatar           : "images/kr-512x512.png"
   bio              : "Shanghai Jiao Tong University"
   location         : "Shanghai, China"
   employer         : "https://jhc.sjtu.edu.cn/~xiaohongliu/"
