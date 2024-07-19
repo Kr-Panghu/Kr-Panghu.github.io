@@ -1,7 +1,7 @@
 ---
 permalink: /
-title: ""
-excerpt: ""
+title: "About Me"
+excerpt: "About me"
 author_profile: true
 redirect_from: 
   - /about/
@@ -17,7 +17,13 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi! I am an junior student majored in computer science at **[Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/)**, China. Currently, I am engaged in research work in MultiMedia Lab under the supervision of Professor Xiaohong Liu. My research interests mainly focuses on **computer vision** and **artificial intelligence generated content**.
+# 🌱 About Me
+
+Hi! I am an senior student majored in computer science at **[Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/)**, China. Currently, I am engaged in research work in MultiMedia Lab under the supervision of Professor [Xiaohong Liu](https://jhc.sjtu.edu.cn/~xiaohongliu/). My research interests mainly focuses on **computer vision** and **artificial intelligence generated content**.
+
+## 📅 News
+
+I'm currently (from July 2024) an exchange visitor for research purposes in Vision and Learning Lab at [University of California Merced](https://www.ucmerced.edu/), under the supervision of Professor [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/).
 
 <!-- # 🔥 News
 - *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
@@ -120,7 +126,7 @@ Hi! I am an junior student majored in computer science at **[Shanghai Jiao Tong 
 
     <p>We introduce a novel bootstrapping approach for training generative models. Specifically, we construct synthetic datasets by combining generated samples from previous iterations with real data. Our empirical results demonstrate the potential for performance improvement through bootstrapping diffusion models. By recycling samples over successive generations, this technique reduces the dependence on large curated datasets while producing varied outputs. </p>
     <p>Advisor: Prof. Jianfu Zhang </p>
-    <p>CS2107: Image Processing and Computer Vision </p>
+    <p>CS3967: Image Processing and Computer Vision </p>
     <p>SJTU, 2023 Fall </p>
   </div>
 </div>
