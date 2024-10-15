@@ -2,12 +2,12 @@ module.exports = {
   // pathPrefix: "/gatsby-theme-academic",
   siteUrl: "https://huskydoge.github.io",
   title: "HuskyDoge",
-  description: "Personal Website of Benhao Huang",
-  author: "HuskyDoge",
-  authorAlternative: "Benhao Huang",
+  description: "Personal Website of Kangrui Cen",
+  author: "Krhimself",
+  authorAlternative: "Kangrui Cen",
   introduction: [
-    "Hello! Husky Here! I'm a junior student at [Shanghai Jiao Tong University](https://en.sjtu.edu.cn/)(SJTU), majoring in Computer Science. I'm currently collaborating with with Professor [Zhiting Hu](http://zhiting.ucsd.edu/) on World Model Projects. Before this, I've been working with my amazing supervisor [Jiaqi Ma](https://jiaqima.github.io/) at [TRAIS Lab](https://github.com/TRAIS-Lab), UIUC. I also had a wonderful research experience at Professor [Quanshi Zhang](http://qszhang.com/)'s [XAI Lab](https://sjtu-xai-lab.github.io/).",
-    "I'm now busy preparing my MS/PhD applications for Fall 2025, wish all the best!",
+    "Hi! I am an senior student majored in computer science at [Shanghai Jiao Tong University (SJTU)](https://en.sjtu.edu.cn/), China. Currently, I am engaged in research work in MultiMedia Lab under the supervision of Professor [Xiaohong Liu](https://jhc.sjtu.edu.cn/~xiaohongliu/).",
+    "I'm honored to have collaborated with Prof. [Ming-Hsuan Yang](https://faculty.ucmerced.edu/mhyang/index.html) from **UCM**, Dr. [Kelvin C.K. Chan](https://ckkelvinchan.github.io/) from **Google DeepMind**, Prof. [Xiaohong Liu](https://jhc.sjtu.edu.cn/~xiaohongliu/) from SJTU. My research interests mainly focuses on **computer vision** and **artificial intelligence generated content**."
   ],
   avatar: "/avatar.png",
   professions: ["Junior Student"],
