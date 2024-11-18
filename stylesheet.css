@@ -472,4 +472,6 @@ university {
   }
   
 
-  
+  .small-font {
+    font-size: 0.9em; /* 或者你想要的任何大小 */
+  }
