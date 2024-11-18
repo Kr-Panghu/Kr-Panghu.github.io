@@ -100,6 +100,12 @@ papertitle {
   font-weight: 700
 }
 
+small_font_text {
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 700
+}
+
 university {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 18px;
@@ -469,9 +475,4 @@ university {
 
   .section-details .section-date {
     font-style: italic;
-  }
-  
-
-  .small-font {
-    font-size: 0.75em; /* 或者你想要的任何大小 */
   }
