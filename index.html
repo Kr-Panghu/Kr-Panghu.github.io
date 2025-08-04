@@ -39,15 +39,16 @@
               <tr>
                 <td class="profile-description">
                   <p class="profile-name">Kangrui Cen</p>
-                  <p class="profile-bio">Hi! I am a senior student majored in Computer Science at <strong><a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a></strong>, where I am a member of <strong><a href="https://jhc.sjtu.edu.cn">John Hopcroft Honors Class</a></strong>, which is an elite CS program for top 5% talented students.</p>
-                  <p class="profile-bio">Currently, I'm honored to collaborate with <strong><a href="https://scholar.google.com.hk/citations?user=p9-ohHsAAAAJ&hl=zh-CN&oi=ao">Prof. Ming-Hsuan Yang</a></strong> at <strong> UCM</strong>, <strong><a href="https://ckkelvinchan.github.io/">Dr. Kelvin C.K. Chan</a></strong> at  <strong> Google DeepMind</strong>, and <strong><a href="https://jhc.sjtu.edu.cn/~xiaohongliu/">Prof. Xiaohong Liu</a></strong> at <strong> SJTU</strong>. Concurrently, I'm an undergraduate researcher in <strong><a href="https://multimedia.sjtu.edu.cn">MultiMedia-Lab</a></strong> at <strong> SJTU</strong>, where I am mentored by <strong><a href="https://jhc.sjtu.edu.cn/~xiaohongliu/">Prof. Xiaohong Liu</a></strong>.</p>
-                  <p class="profile-apply">I'm now busy preparing my PhD/MS applications for Fall 2025, wish all the best!</p>
+                  <p class="profile-bio">Hi! I am currently a research intern at OPPO Research Institute, supervised by <strong><a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a></strong>.
+                    Before that, I recieved my Bachelor degree in Computer Science from <strong><a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a></strong>, where I am a member of <strong><a href="https://jhc.sjtu.edu.cn">John Hopcroft Honors Class</a></strong>.</p>
+                  <p class="profile-bio">Previously, I'm honored to collaborate with <strong><a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a></strong> at <strong> UCM</strong>, <strong><a href="https://ckkelvinchan.github.io/">Dr. Kelvin C.K. Chan</a></strong> at  <strong> Google DeepMind</strong>, and <strong><a href="https://jhc.sjtu.edu.cn/~xiaohongliu/">Prof. Xiaohong Liu</a></strong> at <strong> SJTU</strong>.</p>
+                  <!-- <p class="profile-apply">I'm now busy preparing my PhD/MS applications for Fall 2025, wish all the best!</p> -->
                   <p class="profile-links">
-                    <a href="mailto:kr2256671169@sjtu.edu.cn">Email</a> &nbsp/&nbsp
-                    <a href="files/CV-Kangrui_Cen.pdf">CV</a> &nbsp/&nbsp
-                    <!-- <a href="https://scholar.google.com.tw/citations?hl=en&pli=1&user=9j7dtGkAAAAJ">Google Scholar</a> &nbsp/&nbsp -->
-                    <a href="https://github.com/Kr-Panghu">Github</a>
-                    <!-- <a href="https://instagram.com/krpanghu">Instagram</a>  -->
+                    <a href="mailto:kr2256671169@sjtu.edu.cn">Email</a> /
+                    <a href="files/CV-Kangrui_Cen.pdf">CV</a> /
+                    <a href="https://scholar.google.com/citations?hl=en&user=iwDymkMAAAAJ">Google Scholar</a> /
+                    <a href="https://github.com/Kr-Panghu">Github</a> /
+                    <a href="https://instagram.com/krpanghu">Instagram</a>
                   </p>
                 </td>
                 <!-- profile image -->
@@ -146,7 +147,9 @@
                   <img src="figs/publications/LayerT2V-teasor.jpg" class="pub-image" height="180">
                 </td>
                 <td width="60%" valign="middle">
-                  <papertitle><em style="color: rgb(255, 30, 30);">[NEW]</em> LayerT2V: Interactive Multi-Object Trajectory Layering for Video Generation</papertitle>
+                  <!-- <papertitle><em style="color: rgb(255, 30, 30);">[NEW]</em>  -->
+                  LayerT2V: Interactive Multi-Object Trajectory Layering for Video Generation
+                  <!-- </papertitle> -->
                   <br>
                   <u>Kangrui Cen</u>,
                   Baixuan Zhao,
@@ -155,14 +158,58 @@
                   Guangtao Zhai,
                   Xiaohong Liu
                   <br>
-                  <em style="color: rgb(127, 29, 7);">Under Review of CVPR</em>
+                  <em style="color: rgb(127, 29, 7);">arXiv PrePrint</em>
                   <br>
                   <details>
                     <summary><strong>Abstract:</strong></summary>
-                    <p><small_font_text>Controlling object motion trajectories in Text-to-Video (T2V) generation is a challenging and relatively under-explored area, particularly in scenarios involving multiple moving objects. Most community models and datasets in the T2V domain are designed for single-object motion, limiting the performance of current generative models in multi-object tasks. Additionally, existing motion control methods in T2V either lack support for multi-object motion scenes or experience severe performance degradation when object trajectories intersect, primarily due to the semantic conflicts in colliding regions. To address these limitations, we introduce LayerT2V, the first approach for generating video by compositing background and foreground objects layer by layer. This layered generation enables flexible integration of multiple independent elements within a video, positioning each element on a distinct “layer” and thus facilitating coherent multi-object synthesis while enhancing control over the generation process. Extensive experiments demonstrate the superiority of LayerT2V in generating complex multi-object scenarios, showcasing 1.4&times; and 4.5&times; improvements in mIoU and AP50 metrics over state-of-the-art (SOTA) methods. The code will be made publicly available.</small_font_text></p>
+                    <p><small_font_text>Controlling object motion trajectories in Text-to-Video (T2V) generation is a challenging and 
+                      relatively under-explored area, particularly in scenarios involving multiple moving objects. Most community models 
+                      and datasets in the T2V domain are designed for single-object motion, limiting the performance of current generative 
+                      models in multi-object tasks. Additionally, existing motion control methods in T2V either lack support for multi-object 
+                      motion scenes or experience severe performance degradation when object trajectories intersect, primarily due to the 
+                      semantic conflicts in colliding regions. To address these limitations, we introduce LayerT2V, the first approach 
+                      for generating video by compositing background and foreground objects layer by layer. This layered generation enables
+                       flexible integration of multiple independent elements within a video, positioning each element on a distinct “layer” 
+                       and thus facilitating coherent multi-object synthesis while enhancing control over the generation process. Extensive
+                        experiments demonstrate the superiority of LayerT2V in generating complex multi-object scenarios, showcasing 1.4&times; 
+                        and 4.5&times; improvements in mIoU and AP50 metrics over state-of-the-art (SOTA) methods. The code will be made 
+                        publicly available. Project Page: <a href="https://kr-panghu.github.io/LayerT2V/"><small_font_text>https://kr-panghu.github.io/LayerT2V/</small_font_text></a></small_font_text></p>
                   </details>
-                  <!-- <a href="https://arxiv.org/pdf/2312.01677">project page</a> -->
-                  <!-- / <a href="https://arxiv.org/pdf/2312.01677">arXiv</a> -->
+                  <a href="https://kr-panghu.github.io/LayerT2V/">Project Page</a>
+                  / <a href="https://github.com/Kr-Panghu/LayerT2V-public">Code</a>
+                  / <a href="https://arxiv.org/abs/2402.02242">arXiv PrePrint</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:10px 20px;width:45%;vertical-align:middle">
+                  <img src="figs/publications/Awesome-Parameter-Efficient-Transfer-Learning.png" class="pub-image" height="180">
+                </td>
+                <td width="60%" valign="middle">
+                  <!-- <papertitle><em style="color: rgb(255, 30, 30);">[NEW]</em>  -->
+                  Parameter-Efficient Fine-Tuning for Pre-Trained Vision Models: A Survey and Benchmark
+                  <!-- </papertitle> -->
+                  <br>
+                  Yi Xin, Jianjiang Yang, Siqi Luo, Yuntao Du, Qi Qin, <u>Kangrui Cen</u>, Yangfan He, Bin Fu, Xiaokang Yang, Guangtao Zhai, Ming-Hsuan Yang, Xiaohong Liu
+                  <br>
+                  <em style="color: rgb(127, 29, 7);">Under Review</em>
+                  <br>
+                  <details>
+                    <summary><strong>Abstract:</strong></summary>
+                    <p><small_font_text>Pre-trained vision models (PVMs) have demonstrated remarkable adaptability across a wide range of downstream vision tasks,
+                       showcasing exceptional performance. However, as these models scale to billions or even trillions of parameters, conventional full fine-tuning
+                        has become increasingly impractical due to its high computational and storage demands. To address these challenges, parameter-efficient
+                         fine-tuning (PEFT) has emerged as a promising alternative, aiming to achieve performance comparable to full fine-tuning while making minimal 
+                         adjustments to the model parameters. This paper presents a comprehensive survey of the latest advancements in the visual PEFT field, systematically 
+                         reviewing current methodologies and categorizing them into four primary categories: addition-based, partial-based, unified-based, and multi-task
+                          tuning. In addition, this paper offers an in-depth analysis of widely used visual datasets and real-world applications where PEFT methods have 
+                          been successfully applied. Furthermore, this paper introduces the V-PEFT Bench, a unified benchmark designed to standardize the evaluation 
+                          of PEFT methods across a diverse set of vision tasks, ensuring consistency and fairness in comparison. Finally, the paper outlines potential 
+                          directions for future research to propel advances in the PEFT field. A comprehensive collection of resources is available 
+                          <a href="https://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning"><small_font_text>at this https URL</small_font_text></a></small_font_text></p>
+                  </details>
+                  <a href="https://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning">Collection of Resources</a>
+                  / <a href="https://arxiv.org/abs/2402.02242">arXiv PrePrint</a>
                 </td>
               </tr>
 
@@ -181,6 +228,27 @@
 
           <table class="content-table">
             <tbody>
+
+              <tr>
+                <td class="section-image-large">
+                  <img src="figs/oppo-logo.png" alt="Oppo logo" class="section-image-large">
+                </td>
+
+                <td class="section-content">
+                  <div class="section-title">
+                    Oppo Research Institute
+                  </div>
+                  <div class="section-details">
+                    <span class="section-date">2025.07 ~ Present </span>
+                    <br>
+                    Shenzhen, Guangdong, China
+                    <br>
+                    Research Intern
+                    <br>
+                    Supervisor: <a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a>
+                  </div>
+                </td>
+              </tr>
 
               <tr>
                 <td class="section-image-large">
@@ -234,12 +302,12 @@
                     Shanghai Jiao Tong University
                   </div>
                   <div class="section-details">
-                    <span class="section-date">2021.09 ~ present</span>
+                    <span class="section-date">2021.09 ~ 2025.06</span>
                     <br>
                     Shanghai, China
                     <br>
-                    GPA: 86.39/100, Major GPA: 89.47/100
-                    <br>
+                    <!-- GPA: 87.48/100 -->
+                    <!-- <br> -->
                     B.S. in Computer Science (Zhiyuan Honors Program, John Hopcroft Class).
                   </div>
                 </td>
@@ -373,6 +441,12 @@
 
               <tr>
                 <td style="padding:5px 50px;width:100%;vertical-align:middle">
+                  <honor>Outstanding Graduates of Shanghai Jiao Tong University</honor>, 2025
+                </td>
+              </tr>
+
+              <tr>
+                <td style="padding:5px 50px;width:100%;vertical-align:middle">
                   <honor>Merit Scholarship, B Level</honor> (top 10%), SJTU, 2022, 2023
                 </td>
               </tr>
@@ -392,7 +466,7 @@
             </tbody>
           </table>
 
-                    
+          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=znsqfXtHntuY52UPpWHmPcPtQkIbNXTTxn4xGiMyUH4&cl=ffffff&w=a"></script>           
           
         </td>
       </tr>
