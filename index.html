@@ -10,10 +10,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
-</head>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦖</text></svg>">
+  
+  <style>
+    /* 全局变量与基础重置 */
+    :root {
+      --bg-color: #fcfcfc;
+      --card-bg: #ffffff;
+      --text-main: #333333;
+      --text-muted: #555555;
+      --accent-color: #1772d0;
+      --accent-hover: #f09228;
+      --section-title: rgba(78, 60, 182, 0.85);
+      --border-radius: 12px;
+      --transition-speed: 0.3s;
+    }
 
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      margin: 0;
+      padding-top: 80px; /* 为固定的导航栏留出空间 */
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 玻璃拟态导航栏 */
+    header {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      padding: 0 5%;
+      height: 70px;
+    }
+
+    /* 个人简介区域 (Flexbox 重构) */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      margin-top: 40px;
+      margin-bottom: 50px;
+    }
+
+    .hero-text {
+      flex: 3;
+    }
+
+    .hero-text h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+      color: var(--text-main);
+    }
+
+    .hero-image {
+      flex: 1.5;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 12px; /* 修改这里，12px 呈现温和的圆角长方形，如果是 0 就是直角 */
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform var(--transition-speed);
+    }
+
+    .hero-image img:hover {
+      transform: translateY(-5px) scale(1.02);
+    }
+
+    /* 通用区块样式 */
+    section {
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--section-title);
+      border-bottom: 2px solid rgba(78, 60, 182, 0.1);
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+    }
+
+    /* 卡片式列表 (用于 Papers 和 Experience) */
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .card-item {
+      display: flex;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0,0,0,0.03);
+      transition: all var(--transition-speed);
+      gap: 25px;
+      align-items: center;
+    }
+
+    .card-item:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+      transform: translateY(-3px);
+    }
+
+    .card-image {
+      flex: 0 0 35%;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+      border: 1px solid #eee;
+    }
+
+    .card-item:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .paper-title {
+      font-weight: 700;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .paper-authors {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .paper-venue {
+      font-weight: 600;
+      color: rgb(127, 29, 7);
+      margin-bottom: 10px;
+    }
+
+    /* 徽章与标签 */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: #f0f4f8;
+      border-radius: 4px;
+      font-size: 13px;
+      margin-right: 5px;
+      color: var(--accent-color);
+      transition: background 0.2s;
+    }
+
+    .badge:hover {
+      background: #e1e8f0;
+    }
+
+    /* 经历与荣誉样式 */
+    .exp-image {
+      flex: 0 0 120px;
+      text-align: center;
+    }
+    
+    .exp-image img {
+      max-width: 90px;
+      border-radius: 8px;
+    }
+
+    .news-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .news-list li {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .card-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .card-image, .exp-image {
+        flex: 0 0 100%;
+        width: 100%;
+        text-align: center;
+      }
+      header {
+        padding: 0 20px;
+      }
+      .nav {
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
 
 <body>
   <header>
@@ -27,465 +238,232 @@
       </ul>
     </nav>
   </header>
-  
-  <table
-    style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;margin-top:75px;">
-    <tbody>
-      <tr style="padding:0px">
-        <td style="padding:0px">
-          <!-- Bio -->
-          <table class="profile-table">
-            <tbody>
-              <tr>
-                <td class="profile-description">
-                  <p class="profile-name">Kangrui Cen</p>
-                  <p class="profile-bio">Hi! I am currently a research intern at OPPO Research Institute, supervised by <strong><a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a></strong>.
-                    Before that, I recieved my Bachelor degree in Computer Science from <strong><a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a></strong>, where I am a member of <strong><a href="https://jhc.sjtu.edu.cn">John Hopcroft Honors Class</a></strong>.</p>
-                  <p class="profile-bio">Previously, I'm honored to collaborate with <strong><a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a></strong> at <strong> UCM</strong>, <strong><a href="https://ckkelvinchan.github.io/">Dr. Kelvin C.K. Chan</a></strong> at  <strong> Google DeepMind</strong>, and <strong><a href="https://jhc.sjtu.edu.cn/~xiaohongliu/">Prof. Xiaohong Liu</a></strong> at <strong> SJTU</strong>.</p>
-                  <!-- <p class="profile-apply">I'm now busy preparing my PhD/MS applications for Fall 2025, wish all the best!</p> -->
-                  <p class="profile-links">
-                    <a href="mailto:kr2256671169@sjtu.edu.cn">Email</a> /
-                    <!-- <a href="files/CV-Kangrui_Cen.pdf">CV</a> / -->
-                    <a href="https://scholar.google.com/citations?hl=en&user=iwDymkMAAAAJ">Google Scholar</a> /
-                    <a href="https://github.com/Kr-Panghu">Github</a> 
-                    <!-- <a href="https://instagram.com/krpanghu">Instagram</a> -->
-                  </p>
-                </td>
-                <!-- profile image -->
-                <td style="padding:2.5%;width:40%;max-width:40%">
-                  <a href="files/kangrui.JPG"><img style="width:80%;max-width:80%" alt="profile photo"
-                      src="files/kangrui.JPG" class="prof-image"></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
 
-          <!-- News-->
-          <table class="section-table">
-            <tbody>
-              <tr>
-                <td class="section-heading">
-                  News
-                </td>
-              </tr>
-            </tbody>
+  <main class="container">
+    
+    <section class="hero-section">
+      <div class="hero-text">
+        <h1>Kangrui Cen</h1>
+        <p>Hi! I am currently a research intern at OPPO Research Institute, supervised by <strong><a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a></strong>. Before that, I received my Bachelor degree in Computer Science from <strong><a href="https://en.sjtu.edu.cn/">Shanghai Jiao Tong University</a></strong>, where I am a member of <strong><a href="https://jhc.sjtu.edu.cn">John Hopcroft Honors Class</a></strong>.</p>
+        <p>Previously, I'm honored to collaborate with <strong><a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a></strong> at <strong>UCM</strong>, <strong><a href="https://ckkelvinchan.github.io/">Dr. Kelvin C.K. Chan</a></strong> at <strong>Google DeepMind</strong>, and <strong><a href="https://jhc.sjtu.edu.cn/~xiaohongliu/">Prof. Xiaohong Liu</a></strong> at <strong>SJTU</strong>.</p>
+        
+        <p class="profile-links" style="text-align: left; margin-top: 25px;">
+          <a href="mailto:kr2256671169@sjtu.edu.cn">Email</a> /
+          <a href="https://scholar.google.com/citations?hl=en&user=iwDymkMAAAAJ">Google Scholar</a> /
+          <a href="https://github.com/Kr-Panghu">Github</a> /
+          <a href="https://huggingface.co/kr-cen">HuggingFace</a>
+        </p>
+      </div>
+      <div class="hero-image">
+        <a href="files/kangrui.JPG"><img alt="profile photo" src="files/kangrui.JPG"></a>
+      </div>
+    </section>
 
-          </table>
-          <table class="content-table">
-            <tbody>
-                <tr>
-                    <td style="padding:10px 10px;width:100%;vertical-align:middle;text-align:justify">
-                        <p style="margin-left: 5%; text-align:left">
-                            <strong>[2026.02]</strong> 🎉 <a href="https://arxiv.org/abs/2512.07348">MICo-150K</a> is accepted to CVPR 2026! The <a href="https://huggingface.co/datasets/kr-cen/MICo-150K">datasets</a> are open-sourced!
-                            <br>
-                            <strong>[2026.02]</strong> 🎓 I will start my PhD journey at <a href="https://www.polyu.edu.hk/en/">the Hong Kong Polytechnic University</a> in Sept. 2026!
-                            <br>
-                            <strong>[2026.01]</strong> 🔥 We've released <a href="https://arxiv.org/abs/2508.04228v2">LayerT2V v2</a> on arxiv. We put forward a brand new multi-layer video representations and adopted Wan Video as our backbone.
-                            <br>
-                            <strong>[2026.01]</strong> 🔥 Release <a href="https://arxiv.org/abs/2601.21406">UniMRG</a> on arxiv, an effective architecture-agnostic post-training method that enhances the understanding capabilities of UMMs by incorporating auxiliary generation tasks.
-                            <br>
-                            <strong>[2025.12]</strong> 🔥 We've released <a href="https://arxiv.org/abs/2512.07348">MICo-150K</a>, a large-scale dataset with identity consistency, and MICo-Bench, enabling effective fine-tuning and evaluation for multi-image composition tasks.
-                            <br>
-                            <strong>[2025.08]</strong> 🔥 Release <a href="https://arxiv.org/abs/2508.04228v1">LayerT2V</a> on arxiv, the first approach for generating video by compositing background and foreground objects layer by layer.
-                            <br>  
-                            <strong>[2025.06]</strong> 🎓 I graduated from Shanghai Jiao Tong University with Bachelor of Science Degree (Computer Science, Zhiyuan Honors), as an outstanding graduate student!
-                        </p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <section id="news">
+      <h2 class="section-title">News</h2>
+      <ul class="news-list">
+        <li><strong>[2026.02]</strong> 🎉 <a href="https://arxiv.org/abs/2512.07348">MICo-150K</a> is accepted to CVPR 2026! The <a href="https://huggingface.co/datasets/kr-cen/MICo-150K">datasets</a> are open-sourced!</li>
+        <li><strong>[2026.02]</strong> 🎓 I will start my PhD journey at <a href="https://www.polyu.edu.hk/en/"><img src="figs/PolyU-logo.jpg" class="university-logo" alt="PolyU Logo"></a> <span class="sjtu-red">The Hong Kong Polytechnic University</span> in Sept. 2026!</li>
+        <li><strong>[2026.02]</strong> 🔥 We've released <a href="https://arxiv.org/abs/2508.04228v2">LayerT2V v2</a> on arxiv. We put forward a brand new multi-layer video representations and adopted Wan Video as our backbone.</li>
+        <li><strong>[2026.01]</strong> 🔥 Release <a href="https://arxiv.org/abs/2601.21406">UniMRG</a> on arxiv, an effective architecture-agnostic post-training method that enhances the understanding capabilities of UMMs.</li>
+        <li><strong>[2025.12]</strong> 🔥 We've released <a href="https://arxiv.org/abs/2512.07348">MICo-150K</a>, a large-scale dataset with identity consistency, and MICo-Bench.</li>
+        <li><strong>[2025.08]</strong> 🔥 Release <a href="https://arxiv.org/abs/2508.04228v1">LayerT2V</a> on arxiv, the first approach for generating video by compositing background and foreground objects layer by layer.</li>
+        <li><strong>[2025.07]</strong> 🧑🏻‍💻 I am now a research intern at <span class="sjtu-red">OPPO Research Institute</span>, supervised by <a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a>!</li>
+        <li><strong>[2025.06]</strong> 🎓 I graduated from <a href="https://en.sjtu.edu.cn/"><img src="figs/SJTU_logo.png" class="university-logo" alt="SJTU Logo"></a> <span class="sjtu-red">Shanghai Jiao Tong University</span> with Bachelor of Science Degree (Computer Science, Zhiyuan Honors), as an outstanding graduate student!</li>
+      </ul>
+    </section>
 
-          
+    <section id="interests">
+      <h2 class="section-title">Research Interests</h2>
+      <p style="text-align:justify; font-size: 16px; line-height: 1.6;">
+        I am broadly interested in Computer Vision, especially Image/Video Editing/Enhancement/Generation, and Vision Language Models. Creating a super-intelligent entity that is capable of seeing, drawing and thinking like humans, or even superior to humans is our mission.
+      </p>
+    </section>
 
-          <!-- Research Interests -->
-          <table
-          class="section-table">
-            <tbody>
-              <tr>
-                <td class="section-heading">
-                  Research Interests
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table
-          class="content-table">
-            <tbody>
-              <tr>
-                <td style="padding:0px 10px;width:100%;vertical-align:middle;text-align:justify">
-                  <p style="text-align:justify">
-                    I am broadly interested in Computer Vision, especially Image/Video Editing/Enhancement/Generation, and Vision Language Models. Creating a super-intelligent entity that is capable of seeing, drawing and thinking like humans, or even superior to humans is our mission.
-                  </p>
-                </td>
-              </tr>
+    <section id="papers">
+      <h2 class="section-title">Papers</h2>
+      <div class="card-list">
+        
+        <div class="card-item">
+          <div class="card-image">
+            <img src="figs/publications/LayerT2V-v2.png" alt="LayerT2V v2">
+          </div>
+          <div class="card-content">
+            <div class="paper-title">LayerT2V: A Unified Multi-Layer Video Generation Framework</div>
+            <div class="paper-authors">Guangzhao Li<sup>*</sup>, <u>Kangrui Cen</u><sup>*</sup>, Baixuan Zhao, Yi Xin, Siqi Luo, Guangtao Zhai, Lei Zhang, Xiaohong Liu</div>
+            <div class="paper-venue">Under Review</div>
+            <details>
+              <summary style="cursor: pointer; font-weight: 600; margin-bottom: 8px;">Abstract</summary>
+              <p style="font-size: 13.5px; margin-top: 5px;">Text-to-video generation has advanced rapidly, but existing methods typically output only the final composited video and lack editable layered representations... Extensive experiments demonstrate that LayerT2V substantially outperforms prior methods in visual fidelity, temporal consistency, and cross-layer coherence.</p>
+            </details>
+            <div style="margin-top: 10px;">
+              <a href="#" class="badge">Project Page</a>
+              <a href="#" class="badge">Code</a>
+              <a href="https://arxiv.org/abs/2508.04228v2" class="badge">arXiv</a>
+            </div>
+          </div>
+        </div>
 
-            </tbody>
-          </table>
+        <div class="card-item">
+          <div class="card-image">
+            <img src="figs/publications/UniMRG.png" alt="UniMRG">
+          </div>
+          <div class="card-content">
+            <div class="paper-title">Generation Enhances Understanding in Unified Multimodal Models via Multi-Representation Generation</div>
+            <div class="paper-authors">Zihan Su<sup>*</sup>, Hongyang Wei<sup>*</sup>, <u>Kangrui Cen</u><sup>*</sup>, Yong Wang, Guanhua Chen, Chun Yuan, Xiangxiang Chu</div>
+            <div class="paper-venue">Under Review</div>
+            <details>
+              <summary style="cursor: pointer; font-weight: 600; margin-bottom: 8px;">Abstract</summary>
+              <p style="font-size: 13.5px; margin-top: 5px;">Unified Multimodal Models (UMMs) integrate both visual understanding and generation within a single framework. In this work, we propose UniMRG, a simple yet effective architecture-agnostic post-training method. UniMRG enhances the understanding capabilities of UMMs by incorporating auxiliary generation tasks...</p>
+            </details>
+            <div style="margin-top: 10px;">
+              <a href="https://sugewud.github.io/UniMRG-Project/" class="badge">Project Page</a>
+              <a href="https://github.com/Sugewud/UniMRG" class="badge">Code</a>
+              <a href="https://arxiv.org/abs/2601.21406" class="badge">arXiv</a>
+            </div>
+          </div>
+        </div>
 
+        <div class="card-item">
+          <div class="card-image">
+            <img src="figs/publications/Qwen-MICo.png" alt="MICo-150K">
+          </div>
+          <div class="card-content">
+            <div class="paper-title">MICo-150K: A Comprehensive Dataset Advancing Multi-Image Composition</div>
+            <div class="paper-authors">Xinyu Wei<sup>*</sup>, <u>Kangrui Cen</u><sup>*</sup>, Hongyang Wei<sup>*</sup>, Zhen Guo, Bairui Li, Zeqing Wang, Jinrui Zhang, Lei Zhang</div>
+            <div class="paper-venue">CVPR 2026</div>
+            <details>
+              <summary style="cursor: pointer; font-weight: 600; margin-bottom: 8px;">Abstract</summary>
+              <p style="font-size: 13.5px; margin-top: 5px;">In controllable image generation, synthesizing coherent and consistent images from multiple reference inputs, i.e., Multi-Image Composition (MICo), remains a challenging problem... Our baseline model matches Qwen-Image-2509 in 3-image composition while supporting arbitrary multi-image inputs.</p>
+            </details>
+            <div style="margin-top: 10px;">
+              <a href="https://mico-150k.github.io/" class="badge">Project Page</a>
+              <a href="https://github.com/A113N-W3I/MICo-150K" class="badge">Code</a>
+              <a href="https://arxiv.org/abs/2512.07348" class="badge">arXiv</a>
+              <a href="https://huggingface.co/datasets/kr-cen/MICo-150K" class="badge">Dataset</a>
+            </div>
+          </div>
+        </div>
 
+        <div class="card-item">
+          <div class="card-image">
+            <img src="figs/publications/Awesome-Parameter-Efficient-Transfer-Learning.png" alt="PEFT Survey">
+          </div>
+          <div class="card-content">
+            <div class="paper-title">Parameter-Efficient Fine-Tuning for Pre-Trained Vision Models: A Survey and Benchmark</div>
+            <div class="paper-authors">Yi Xin, Jianjiang Yang, Siqi Luo, Yuntao Du, Qi Qin, <u>Kangrui Cen</u>, Yangfan He, Bin Fu, Xiaokang Yang, Guangtao Zhai, Ming-Hsuan Yang, Xiaohong Liu</div>
+            <div class="paper-venue">Under Review</div>
+            <details>
+              <summary style="cursor: pointer; font-weight: 600; margin-bottom: 8px;">Abstract</summary>
+              <p style="font-size: 13.5px; margin-top: 5px;">Pre-trained vision models (PVMs) have demonstrated remarkable adaptability across a wide range of downstream vision tasks... This paper presents a comprehensive survey of the latest advancements in the visual PEFT field, systematically reviewing current methodologies...</p>
+            </details>
+            <div style="margin-top: 10px;">
+              <a href="https://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning" class="badge">Resources</a>
+              <a href="https://arxiv.org/abs/2402.02242" class="badge">arXiv</a>
+            </div>
+          </div>
+        </div>
 
-          <!-- Publications -->
-          <table
-          class="section-table">
-            <tbody>
-              <tr>
-                <td class="section-heading">
-                  Papers
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table
-          class="content-table">
-            <tbody>
+      </div>
+    </section>
 
-              <tr>
-                <td style="padding:10px 20px;width:45%;vertical-align:middle">
-                  <img src="figs/publications/LayerT2V-teasor.jpg" class="pub-image" height="180">
-                </td>
-                <td width="60%" valign="middle">
-                  <!-- <papertitle><em style="color: rgb(255, 30, 30);">[NEW]</em>  -->
-                  LayerT2V: Interactive Multi-Object Trajectory Layering for Video Generation
-                  <!-- </papertitle> -->
-                  <br>
-                  <u>Kangrui Cen</u>,
-                  Baixuan Zhao,
-                  Yi Xin,
-                  Siqi Luo,
-                  Guangtao Zhai,
-                  Xiaohong Liu
-                  <br>
-                  <em style="color: rgb(127, 29, 7);">arXiv PrePrint</em>
-                  <br>
-                  <details>
-                    <summary><strong>Abstract:</strong></summary>
-                    <p><small_font_text>Controlling object motion trajectories in Text-to-Video (T2V) generation is a challenging and 
-                      relatively under-explored area, particularly in scenarios involving multiple moving objects. Most community models 
-                      and datasets in the T2V domain are designed for single-object motion, limiting the performance of current generative 
-                      models in multi-object tasks. Additionally, existing motion control methods in T2V either lack support for multi-object 
-                      motion scenes or experience severe performance degradation when object trajectories intersect, primarily due to the 
-                      semantic conflicts in colliding regions. To address these limitations, we introduce LayerT2V, the first approach 
-                      for generating video by compositing background and foreground objects layer by layer. This layered generation enables
-                       flexible integration of multiple independent elements within a video, positioning each element on a distinct “layer” 
-                       and thus facilitating coherent multi-object synthesis while enhancing control over the generation process. Extensive
-                        experiments demonstrate the superiority of LayerT2V in generating complex multi-object scenarios, showcasing 1.4&times; 
-                        and 4.5&times; improvements in mIoU and AP50 metrics over state-of-the-art (SOTA) methods. The code will be made 
-                        publicly available. Project Page: <a href="https://kr-panghu.github.io/LayerT2V/"><small_font_text>https://kr-panghu.github.io/LayerT2V/</small_font_text></a></small_font_text></p>
-                  </details>
-                  <a href="https://kr-panghu.github.io/LayerT2V/">Project Page</a>
-                  / <a href="https://github.com/Kr-Panghu/LayerT2V-public">Code</a>
-                  / <a href="https://arxiv.org/abs/2508.04228">arXiv PrePrint</a>
-                </td>
-              </tr>
+    <section id="experience">
+      <h2 class="section-title">Experience</h2>
+      <div class="card-list">
+        
+        <div class="card-item">
+          <div class="exp-image">
+            <img src="figs/oppo-logo.png" alt="Oppo logo">
+          </div>
+          <div class="card-content">
+            <div class="section-title">Oppo Research Institute</div>
+            <div class="section-details">
+              <span style="color: var(--text-muted); font-size: 14px;">2025.07 ~ Present | Shenzhen, Guangdong, China</span><br>
+              <strong>Research Intern</strong><br>
+              Supervisor: <a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a>
+            </div>
+          </div>
+        </div>
 
-              <tr>
-                <td style="padding:10px 20px;width:45%;vertical-align:middle">
-                  <img src="figs/publications/Awesome-Parameter-Efficient-Transfer-Learning.png" class="pub-image" height="180">
-                </td>
-                <td width="60%" valign="middle">
-                  <!-- <papertitle><em style="color: rgb(255, 30, 30);">[NEW]</em>  -->
-                  Parameter-Efficient Fine-Tuning for Pre-Trained Vision Models: A Survey and Benchmark
-                  <!-- </papertitle> -->
-                  <br>
-                  Yi Xin, Jianjiang Yang, Siqi Luo, Yuntao Du, Qi Qin, <u>Kangrui Cen</u>, Yangfan He, Bin Fu, Xiaokang Yang, Guangtao Zhai, Ming-Hsuan Yang, Xiaohong Liu
-                  <br>
-                  <em style="color: rgb(127, 29, 7);">Under Review</em>
-                  <br>
-                  <details>
-                    <summary><strong>Abstract:</strong></summary>
-                    <p><small_font_text>Pre-trained vision models (PVMs) have demonstrated remarkable adaptability across a wide range of downstream vision tasks,
-                       showcasing exceptional performance. However, as these models scale to billions or even trillions of parameters, conventional full fine-tuning
-                        has become increasingly impractical due to its high computational and storage demands. To address these challenges, parameter-efficient
-                         fine-tuning (PEFT) has emerged as a promising alternative, aiming to achieve performance comparable to full fine-tuning while making minimal 
-                         adjustments to the model parameters. This paper presents a comprehensive survey of the latest advancements in the visual PEFT field, systematically 
-                         reviewing current methodologies and categorizing them into four primary categories: addition-based, partial-based, unified-based, and multi-task
-                          tuning. In addition, this paper offers an in-depth analysis of widely used visual datasets and real-world applications where PEFT methods have 
-                          been successfully applied. Furthermore, this paper introduces the V-PEFT Bench, a unified benchmark designed to standardize the evaluation 
-                          of PEFT methods across a diverse set of vision tasks, ensuring consistency and fairness in comparison. Finally, the paper outlines potential 
-                          directions for future research to propel advances in the PEFT field. A comprehensive collection of resources is available 
-                          <a href="https://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning"><small_font_text>at this https URL</small_font_text></a></small_font_text></p>
-                  </details>
-                  <a href="https://github.com/synbol/Awesome-Parameter-Efficient-Transfer-Learning">Collection of Resources</a>
-                  / <a href="https://arxiv.org/abs/2402.02242">arXiv PrePrint</a>
-                </td>
-              </tr>
+        <div class="card-item">
+          <div class="exp-image">
+            <img src="figs/Google_logo.png" alt="Google logo">
+          </div>
+          <div class="card-content">
+            <div class="section-title">Google DeepMind</div>
+            <div class="section-details">
+              <span style="color: var(--text-muted); font-size: 14px;">2024.06 ~ 2024.12 | Seattle, WA, USA</span><br>
+              <strong>Remote Collaborator</strong><br>
+              Supervisor: <a href="https://ckkelvinchan.github.io/">Dr. Kelvin C.K. Chan</a>; <a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a>
+            </div>
+          </div>
+        </div>
 
-            </tbody>
-          </table>
-               
-          <table class="section-table">
-            <tbody>
-              <tr>
-                <td class="section-heading">
-                  Experience
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="card-item">
+          <div class="exp-image">
+            <img src="figs/UCM_Seal_FullColor.jpeg" alt="UCM logo">
+          </div>
+          <div class="card-content">
+            <div class="section-title">University of California, Merced</div>
+            <div class="section-details">
+              <span style="color: var(--text-muted); font-size: 14px;">2024.04 ~ 2025.01 | Merced, CA, USA</span><br>
+              <strong>Exchange Scholar</strong><br>
+              Supervisor: <a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a>
+            </div>
+          </div>
+        </div>
 
-          <table class="content-table">
-            <tbody>
+        <div class="card-item">
+          <div class="exp-image">
+            <img src="figs/SJTU_logo.png" alt="SJTU logo">
+          </div>
+          <div class="card-content">
+            <div class="section-title">Shanghai Jiao Tong University</div>
+            <div class="section-details">
+              <span style="color: var(--text-muted); font-size: 14px;">2021.09 ~ 2025.06 | Shanghai, China</span><br>
+              <strong>B.S. in Computer Science</strong> (Zhiyuan Honors Program, John Hopcroft Class)
+            </div>
+          </div>
+        </div>
 
-              <tr>
-                <td class="section-image-large">
-                  <img src="figs/oppo-logo.png" alt="Oppo logo" class="section-image-large">
-                </td>
+      </div>
+    </section>
 
-                <td class="section-content">
-                  <div class="section-title">
-                    Oppo Research Institute
-                  </div>
-                  <div class="section-details">
-                    <span class="section-date">2025.07 ~ Present </span>
-                    <br>
-                    Shenzhen, Guangdong, China
-                    <br>
-                    Research Intern
-                    <br>
-                    Supervisor: <a href="https://www4.comp.polyu.edu.hk/~cslzhang/">Prof. Lei Zhang</a>
-                  </div>
-                </td>
-              </tr>
+    <section id="honors">
+      <h2 class="section-title">Honors</h2>
+      <ul class="news-list">
+        <li><strong>Outstanding Graduates of Shanghai Jiao Tong University</strong>, 2025</li>
+        <li><strong>Merit Scholarship, B Level</strong> (top 10%), SJTU, 2022, 2023</li>
+        <li><strong>Meritorious Winner of MCM/ICM</strong> (top 7%), 2022</li>
+        <li><strong>Zhiyuan Honors Scholarship</strong> (top 5%), SJTU, 2021, 2022, 2023</li>
+      </ul>
+    </section>
 
-              <tr>
-                <td class="section-image-large">
-                  <img src="figs/Google_logo.png" alt="Google logo" class="section-image-large">
-                </td>
+    <section style="text-align: center; margin-top: 60px;">
+      <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=znsqfXtHntuY52UPpWHmPcPtQkIbNXTTxn4xGiMyUH4&cl=ffffff&w=a"></script>
+    </section>
 
-                <td class="section-content">
-                  <div class="section-title">
-                    Google DeepMind
-                  </div>
-                  <div class="section-details">
-                    <span class="section-date">2024.06 ~ 2024.12 </span>
-                    <br>
-                    Seattle, WA, USA
-                    <br>
-                    Remote Collaborator
-                    <br>
-                    Supervisor: <a href="https://ckkelvinchan.github.io/">Dr. Kelvin C.K. Chan</a>; <a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a>
-                  </div>
-                </td>
-              </tr>
+  </main>
 
-              <tr>
-                <td class="section-image-large">
-                  <img src="figs/UCM_Seal_FullColor.jpeg" alt="UCM logo" class="section-image-large">
-                </td>
-
-                <td class="section-content">
-                  <div class="section-title">
-                    University of California, Merced
-                  </div>
-                  <div class="section-details">
-                    <span class="section-date">2024.04 ~ 2025.01 </span>
-                    <br>
-                    Merced, CA, USA
-                    <br>
-                    Exchange Scholar
-                    <br>
-                    Supervisor: <a href="https://faculty.ucmerced.edu/mhyang/">Prof. Ming-Hsuan Yang</a>
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="section-image-large">
-                  <img src="figs/SJTU_logo.png" alt="SJTU_logo" class="section-image-large">
-                </td>
-
-                <td class="section-content">
-                  <div class="section-title">
-                    Shanghai Jiao Tong University
-                  </div>
-                  <div class="section-details">
-                    <span class="section-date">2021.09 ~ 2025.06</span>
-                    <br>
-                    Shanghai, China
-                    <br>
-                    <!-- GPA: 87.48/100 -->
-                    <!-- <br> -->
-                    B.S. in Computer Science (Zhiyuan Honors Program, John Hopcroft Class).
-                  </div>
-                </td>
-              </tr>         
-
-            </tbody>
-          </table>
-
-          <!-- Course Projects -->
-          <!-- <table
-          class="section-table">
-            <tbody>
-              <tr>
-                <td class="section-heading">
-                  Course Projects
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table
-          class="content-table">
-            <tbody>
-
-               <tr>
-                <td style="padding:10px 20px;width:40%;vertical-align:middle">
-                  <img src="figs/CourseProjects/CS3964_image.png" class="pub-image" height="180">
-                </td>
-                <td width="60%" valign="middle">
-                  <papertitle>Bootstrapping Diffusion Models: Iterative Synthetic Data Generation for Self-Supervised Learning</papertitle>
-                  <br>
-                  Kangrui Cen,
-                  Yuxiao Yang,
-                  Shuze Chen,
-                  Ziqi Huang,
-                  Tianyu Zhang
-                  <br>
-                  <em>CS3964: Image Processing and Computer Vision</em>, 2023 Fall
-                  <br> 
-                  <details>
-                    <summary><strong>Summary:</strong></summary>
-                    <p><small_font_text>We introduce a novel bootstrapping approach for training generative models. Specifically, we construct synthetic datasets by combining generated samples from previous iterations with real data. By recycling samples over successive generations, this technique reduces the dependence on large curated datasets while producing varied outputs.</small_font_text></p>
-                  </details>
-                  <p>Advisor: <a href="http://www.qingyuan.sjtu.edu.cn/a/Jianfu-Zhang.html">Prof. Jianfu Zhang</a>, &nbsp &nbsp <a href="https://github.com/Kr-Panghu/Bootstrapping_Diffusion">Code</a>
-                    / <a href="https://Kr-Panghu.github.io/files/CourseProjects/CS3964.pdf">Project Paper</a></p>
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:10px 20px;width:40%;vertical-align:middle">
-                  <img src="figs/CourseProjects/Information_theory_image.png" class="pub-image" height="180">
-                </td>
-                <td width="60%" valign="middle">
-                  <papertitle>Using information theoretic metrics to study the importance of individual neurons in DNNs</papertitle>
-                  <br>
-                  Kangrui Cen
-                  <br>
-                  <em>ICE2601: Information Theory</em>, 2023 Spring
-                  <br> 
-                  <details>
-                    <summary><strong>Summary:</strong></summary>
-                    <p><small_font_text>Using information theoretic metrics for node pruning to learn the importance of individual neurons at different levels in the whole DNN. Entropy, Mutual information and KL-Selectivity are used to determine the order of ablation.</small_font_text></p>
-                  </details>
-                  <p>Advisor: <a href="https://www.cs.sjtu.edu.cn/~chengfan/">Prof. Fan Cheng</a>, &nbsp &nbsp <a href="https://github.com/Kr-Panghu/UNN-on-MNIST">Code</a>
-                    / <a href="https://Kr-Panghu.github.io/files/CourseProjects/Information_theory_paper.pdf">Project Paper</a> / <a href="https://Kr-Panghu.github.io/files/CourseProjects/Information_theory_slides.pdf">Slides</a></p> 
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:10px 20px;width:40%;vertical-align:middle">
-                  <img src="figs/CourseProjects/CS2107_image.png" class="pub-image" height="180">
-                </td>
-                <td width="60%" valign="middle">
-                  <papertitle>GAMES101 RUST (Designed when I was a TA for <em>Programming and Data Structure III</em>)</papertitle>
-                  <br>
-                  <em>CS2107: Programming and Data Structure III</em>, 2023 Summer
-                  <br> 
-                  <details>
-                    <summary><strong>Summary:</strong></summary>
-                    <p><small_font_text>This is the course project I designed on my own for CS2107 where I served as TA, which is basically generated from Graphics And Mixed Environemnt Seminar, Lingqi Yan, UCSB, but chooses to use a more modern programming language, i.e. Rust. The project includes 3 LABs, simply allows students to learn the basics of rasterization in graphics and, most importantly, to have fun.</small_font_text></p>
-                  </details>
-                  <p>Advisor: Prof. Qinsheng Ren,  &nbsp &nbsp <a href="https://github.com/Kr-Panghu/GAMES101-RUST-2023">Public Template</a>
-                    / <a href="https://Kr-Panghu.github.io/files/CourseProjects/CS2107.pdf">Project Tutorial</a></p> 
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:10px 20px;width:40%;vertical-align:middle">
-                  <img src="figs/CourseProjects/llm_framework.jpg" class="pub-image" height="180">
-                </td>
-                <td width="60%" valign="middle">
-                  <papertitle>Stop Running Your Mouth: Machine Unlearning 4 Pre-Trained LLMs</papertitle>
-                  <br>
-                  Kangrui Cen, Tianyu Zhang
-                  <br>
-                  <em>CS3966: Natural Language Processing and Large Language Model</em>, 2024 Spring
-                  <br> 
-                  <details>
-                    <summary><strong>Summary:</strong></summary>
-                    <p><small_font_text>We employ the Machine Unlearning approach to mitigate the retention of unethical data within LLMs and prevent the generation of harmful responses. We carefully design a method to ensure: (1) For a negative Q&A training pair, the LLM forgets its original response to the input; (2) The LLM randomly maps negative prompts to any output distribution within its output space; (3) The LLM maintains a level of general language ability close to its original state post-unlearning.</small_font_text></p>
-                  </details>
-                  <p>Advisor: <a href="https://wangruinlp.github.io/">Prof. Rui Wang</a>,
-                    <br> 
-                    <a href="https://github.com/Kr-Panghu/LLM_Unlearning">Code</a>
-                    / <a href="https://Kr-Panghu.github.io/files/CourseProjects/LLM_Project_2024.pdf#page=3">Project Paper</a>
-                    / <a href="https://Kr-Panghu.github.io/files/CourseProjects/LLM_Project_2024.pdf#page=1">Simulative Rebuttal</a> 
-                    / <a href="https://Kr-Panghu.github.io/files/CourseProjects/NLP_Final_6-3.pdf">Slides</a> </p> 
-                </td>
-              </tr>
-              
-
-            </tbody>
-          </table> -->
-          
-          
-          <!-- Honors -->
-          <table
-          class="section-table">
-            <tbody>
-              <tr>
-                <td class="section-heading">
-                  Honors
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <table
-          class="content-table">
-            <tbody>
-
-              <tr>
-                <td style="padding:5px 50px;width:100%;vertical-align:middle">
-                  <honor>Outstanding Graduates of Shanghai Jiao Tong University</honor>, 2025
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:5px 50px;width:100%;vertical-align:middle">
-                  <honor>Merit Scholarship, B Level</honor> (top 10%), SJTU, 2022, 2023
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:5px 50px;width:100%;vertical-align:middle">
-                  <honor>Meritorious Winner of MCM/ICM</honor> (top 7%), 2022
-                </td>
-              </tr>
-
-              <tr>
-                <td style="padding:5px 50px;width:100%;vertical-align:middle">
-                  <honor>Zhiyuan Honors Scholarship</honor> (top 5%), SJTU, 2021, 2022, 2023
-                </td>
-              </tr>
-                    
-            </tbody>
-          </table>
-
-          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=znsqfXtHntuY52UPpWHmPcPtQkIbNXTTxn4xGiMyUH4&cl=ffffff&w=a"></script>           
-          
-        </td>
-      </tr>
-  </table>
   <script>
-  // Get the header
-  var header = document.querySelector("header");
+    // Navbar hide/show logic on scroll
+    var header = document.querySelector("header");
+    var lastScrollTop = 0;
 
-  // When the user scrolls down 20px from the top of the document, hide the header
-  window.onscroll = function() {
-    if (window.pageYOffset > 20) {
-      header.style.transform = "translateY(-100%)";
-    } else {
-      header.style.transform = "translateY(0)";
-    }
-  }
-
+    window.onscroll = function() {
+      var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop && currentScroll > 50) {
+        // Scroll down
+        header.style.transform = "translateY(-100%)";
+      } else {
+        // Scroll up
+        header.style.transform = "translateY(0)";
+      }
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    };
   </script>
 
-<!-- Cloudflare Web Analytics -->
-<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c3f89b2d86fd4bdb84e54ee4be31ca44"}'></script>
-<!-- End Cloudflare Web Analytics -->
-
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c3f89b2d86fd4bdb84e54ee4be31ca44"}'></script>
+  
 </body>
-
 </html>
-
